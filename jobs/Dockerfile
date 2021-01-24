@@ -4,14 +4,9 @@ WORKDIR /usr/src/app
 
 RUN apt-get update && apt-get -y install cron
 
-COPY package.json /usr/src/app
-COPY package-lock.json /usr/src/app
+COPY . .
 
 RUN npm ci
-
-COPY tsconfig.json /usr/src/app
-COPY src /usr/src/app
-
 RUN npm run build
 
 COPY stats-cron /etc/cron.d/hello-cron
