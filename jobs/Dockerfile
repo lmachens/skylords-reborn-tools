@@ -17,4 +17,4 @@ RUN touch /var/log/cron.log
 
 RUN chmod -v +x /usr/src/app/run-cron.sh
 
-CMD run-cron.sh
+CMD /usr/src/app/run-cron.sh
