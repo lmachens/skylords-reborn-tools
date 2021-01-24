@@ -1,0 +1,32 @@
+{
+  "name": "skylords-reborn-tools-jobs",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "tsc",
+    "stats": "node build/stats"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmachens/skylords-reborn-tools.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lmachens/skylords-reborn-tools/issues"
+  },
+  "homepage": "https://github.com/lmachens/skylords-reborn-tools#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongodb": "^3.6.3",
+    "node-fetch": "^2.6.1",
+    "typescript": "^4.1.3"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^3.6.3",
+    "@types/node": "^14.14.22",
+    "@types/node-fetch": "^2.5.8"
+  }
+}
