@@ -15,4 +15,5 @@ RUN crontab /etc/cron.d/stats-cron
 
 RUN touch /var/log/cron.log
 
+RUN npm run stats
 CMD cron && tail -f /var/log/cron.log
