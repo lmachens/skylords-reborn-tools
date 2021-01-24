@@ -9,7 +9,10 @@ COPY . .
 RUN npm ci
 RUN npm run build
 
-COPY stats-cron /etc/cron.d/hello-cron
-RUN chmod 0644 /etc/cron.d/hello-cron
-RUN crontab /etc/cron.d/hello-cron
-CMD cron
+COPY stats-cron /etc/cron.d/stats-cron
+RUN chmod 0644 /etc/cron.d/stats-cron
+RUN crontab /etc/cron.d/stats-cron
+
+RUN touch /var/log/cron.log
+
+CMD cron && tail -f /var/log/cron.log
