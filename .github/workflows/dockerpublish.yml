@@ -21,13 +21,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build jobs image
-        run: docker build . --file jobs/Dockerfile --tag $IMAGE_NAME
+      - name: Change to jobs project
+        run: cd jobs
+
+      - name: Build image
+        run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
 
-      - name: Push jobs image
+      - name: Push image
         run: |
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
 
