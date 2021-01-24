@@ -15,6 +15,6 @@ RUN crontab /etc/cron.d/stats-cron
 
 RUN touch /var/log/cron.log
 
-RUN printenv | grep -v "no_proxy" >> /etc/environment
+RUN chmod -v +x /usr/src/app/run-cron.sh
 
-CMD cron && tail -f /var/log/cron.log
+CMD run-cron.sh
