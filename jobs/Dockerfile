@@ -15,5 +15,7 @@ RUN crontab /etc/cron.d/stats-cron
 
 RUN touch /var/log/cron.log
 
+RUN printenv | grep -v "no_proxy" >> /etc/environment
 RUN npm run stats
+
 CMD cron && tail -f /var/log/cron.log
