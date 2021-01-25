@@ -9,5 +9,8 @@ export const connect = async () => {
     useUnifiedTopology: true,
   });
 
-  return await client.connect();
+  await client.connect();
+  const db = client.db();
+  await db.collection("stats").createIndexes([{ key: { timestmap: -1 } }]);
+  return client;
 };
