@@ -49,7 +49,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Skylords Reborn Tools</title>
+        <title>Skylords Reborn Tools - Stats</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

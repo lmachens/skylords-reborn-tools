@@ -5,7 +5,8 @@
   "description": "",
   "scripts": {
     "build": "tsc",
-    "stats": "node build/stats"
+    "stats": "node build/stats",
+    "leaderboards": "node build/leaderboards"
   },
   "repository": {
     "type": "git",

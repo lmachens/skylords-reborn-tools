@@ -1,0 +1,19 @@
+.header {
+  height: 56px;
+  background-color: #272727;
+}
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.nav a {
+  padding: 0.5em;
+  color: rgba(255, 255, 255, 0.85);
+}
+.nav a:hover {
+  padding: 0.5em;
+  color: rgba(255, 255, 255);
+}
