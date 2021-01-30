@@ -58,7 +58,7 @@ type LeaderboardsPVP1v1APIResult = {
   activity: number;
   totalMatches: number;
   winsLimited: number;
-  losesLimited: number;
+  lossesLimited: number;
   baseElo: number;
 }[];
 export const get1v1Leaderboard = async () => {

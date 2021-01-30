@@ -12,7 +12,7 @@ const run = async () => {
     rating: leaderboard.rating,
     activity: leaderboard.activity,
     wins: leaderboard.winsLimited,
-    losses: leaderboard.losesLimited,
+    losses: leaderboard.lossesLimited,
     timestamp: now,
   }));
   await db.collection("rankings").insertMany(rankings);
