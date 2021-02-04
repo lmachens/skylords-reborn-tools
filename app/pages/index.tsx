@@ -14,11 +14,26 @@ const endpoints = [
   "matches/2pve",
   "matches/4pve",
   "matches/12pve",
+  "matches/players",
+  "matches/1rpve",
+  "matches/2rpve",
+  "matches/4rpve",
+  "matches/1cpve",
+  "matches/2cpve",
+  "matches/4cpve",
+  "matches/c1v1",
+  "matches/c2v2",
+  "matches/c3v3",
   "quests/active",
+  "quests/completed",
+  "quests/rerolled",
   "auctions",
+  "auctions/watchers",
   "cards",
   "upgrades",
   "boosters",
+  "boosters/opened",
+  "boosters/spent",
   "mails",
   "decks",
   "transactions",
@@ -26,6 +41,9 @@ const endpoints = [
   "elo",
   "bfp",
   "gold",
+  "friendlist",
+  "mutelist",
+  "scratch",
 ];
 
 const Home = () => {
@@ -40,7 +58,10 @@ const Home = () => {
       endpoints.map((endpoint) => [
         {
           name: endpoint[0].toUpperCase() + endpoint.slice(1),
-          data: stats.map((item) => [item.timestamp, item[endpoint].count]),
+          data: stats.map((item) => [
+            item.timestamp,
+            item[endpoint]?.count || 0,
+          ]),
         },
       ]),
     [stats]
