@@ -75,7 +75,7 @@ const Home = () => {
       </Head>
 
       {seriesList.map((series) => (
-        <Chart series={series} title={series[0].name} />
+        <Chart key={series[0].name} series={series} title={series[0].name} />
       ))}
     </div>
   );
