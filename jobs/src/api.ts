@@ -70,7 +70,7 @@ export const getStats = async () => {
 type LeaderboardsPVPCountAPIResult = {
   count: number;
 };
-type LeaderboardsPVP1v1APIResult = {
+export type LeaderboardsPVP1v1APIResult = {
   name: string;
   rating: number;
   activity: number;
@@ -78,18 +78,29 @@ type LeaderboardsPVP1v1APIResult = {
   winsLimited: number;
   lossesLimited: number;
   baseElo: number;
-}[];
-export const get1v1Leaderboard = async () => {
+};
+
+export type LeaderboardsPVP2v2APIResult = {
+  players: string[];
+  baseElo: number;
+  rating: number;
+  activity: number;
+  wins: number;
+  losses: number;
+};
+
+export type PVPMode = "1v1" | "2v2";
+export const getLeaderboard = async <T>(mode: PVPMode) => {
   const { count } = await fetchJSON<LeaderboardsPVPCountAPIResult>(
-    "https://leaderboards.backend.skylords.eu/api/leaderboards/pvp-count/1v1/0"
+    `https://leaderboards.backend.skylords.eu/api/leaderboards/pvp-count/${mode}/0`
   );
   const limit = 30;
   const pages = Math.ceil(count / limit);
-  let promises = [];
+  let promises: Promise<T[]>[] = [];
   for (let page = 1; page <= pages; page++) {
     promises.push(
-      fetchJSON<LeaderboardsPVP1v1APIResult>(
-        `https://leaderboards.backend.skylords.eu/api/leaderboards/pvp/1v1/0/${page}/30`
+      fetchJSON<T[]>(
+        `https://leaderboards.backend.skylords.eu/api/leaderboards/pvp/${mode}/0/${page}/30`
       )
     );
   }
@@ -100,3 +111,9 @@ export const get1v1Leaderboard = async () => {
   );
   return leaderboard;
 };
+
+export const get1v1Leaderboard = () =>
+  getLeaderboard<LeaderboardsPVP1v1APIResult>("1v1");
+
+export const get2v2Leaderboard = () =>
+  getLeaderboard<LeaderboardsPVP2v2APIResult>("2v2");

@@ -14,6 +14,9 @@ export const connect = async () => {
   await db.collection("stats").createIndexes([{ key: { timestamp: -1 } }]);
   await db
     .collection("rankings")
-    .createIndexes([{ key: { timestamp: -1 } }, { key: { name: 1 } }]);
+    .createIndexes([
+      { key: { mode: 1, timestamp: -1 } },
+      { key: { mode: 1, name: 1 } },
+    ]);
   return client;
 };

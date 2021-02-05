@@ -17,11 +17,11 @@ export type RankingResult = {
   timestamp: number;
 };
 export type LeaderboardResult = RankingResult[];
-export const getLeaderboard = async () => {
-  const response = await fetch(`/api/leaderboard`);
+export const getLeaderboard = async (mode) => {
+  const response = await fetch(`/api/leaderboard?mode=${mode}`);
   return (await response.json()) as LeaderboardResult;
 };
-export const getPlayerDetails = async (name: string) => {
-  const response = await fetch(`/api/players/${name}`);
+export const getPlayerDetails = async (mode, name: string) => {
+  const response = await fetch(`/api/players/${name}?mode=${mode}`);
   return (await response.json()) as LeaderboardResult;
 };

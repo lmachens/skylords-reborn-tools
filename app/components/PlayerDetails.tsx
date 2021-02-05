@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { getPlayerDetails, RankingResult } from "../lib/api";
 import Chart from "./Chart";
 import styles from "../styles/PlayerDetails.module.css";
+import { useRouter } from "next/router";
 
 type Props = {
   ranking: RankingResult;
@@ -9,9 +10,11 @@ type Props = {
 
 const PlayerDetails = ({ ranking }: Props) => {
   const [details, setDetails] = useState([]);
+  const router = useRouter();
+  const mode = router.query.mode || "1v1";
 
   useEffect(() => {
-    getPlayerDetails(ranking.name).then(setDetails);
+    getPlayerDetails(mode, ranking.name).then(setDetails);
   }, []);
 
   const ratingSeries = useMemo(
